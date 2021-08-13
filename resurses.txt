@@ -7,3 +7,4 @@ https://convertlive.com/ru/u/ -> Время(справа)
 
 Статья по pthread с примероом
 https://tetraquark.ru/archives/47
+https://tetraquark.ru/archives/135
