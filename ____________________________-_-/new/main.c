@@ -24,8 +24,11 @@ void	philo_init(t_param *param)
 	while (i <= param->number_of_philo)
 	{
 		param->philo[i].num_philo = i;
-		param->philo[i].left_fork = 0;
-		param->philo[i].right_fork = 0;
+		param->philo[i].left_fork = i;
+		if (i == param->number_of_philo)
+			param->philo[i].right_fork = 1;
+		else
+			param->philo[i].right_fork = i + 1;
 		param->philo[i].eating = 0;
 		i++;
 	}
@@ -41,6 +44,36 @@ void	mutex_init(t_param *param)
 		pthread_mutex_init(&(param->fork[i]), NULL);
 		i++;
 	}
+	pthread_mutex_init(&param->mutex, NULL);
+}
+
+void	*ft_eat(void *philo)
+{
+	t_philo *p;
+
+	p = (t_philo *)philo;
+	p->eating = 1;
+	param.check += 1;
+	printf("%lld    %d    is eating\n", check_time() - param.time_start, p->num_philo);
+	user_sleep(param.time_to_sleep);
+	return (NULL);
+}
+
+void	*take_forks(void *philo)
+{
+	t_philo *p;
+
+	p = (t_philo *)philo;
+	pthread_mutex_lock(&param.fork[p->left_fork]);
+	printf("%lld    %d    has taken a left fork\n", check_time() - param.time_start, p->num_philo);
+	pthread_mutex_lock(&param.fork[p->right_fork]);
+	// printf("%lld    %d    has taken a left fork\n", check_time() - param.time_start, p->num_philo);
+	// pthread_mutex_lock(&param.fork[p->right_fork]);
+	printf("%lld    %d    has taken a right fork\n", check_time() - param.time_start, p->num_philo);
+	ft_eat(philo);
+	// pthread_mutex_unlock(&param.fork[p->left_fork]);
+	// pthread_mutex_unlock(&param.fork[p->right_fork]);
+	return (NULL);
 }
 
 void	*life(void	*philo)
@@ -48,7 +81,12 @@ void	*life(void	*philo)
 	t_philo *p;
 
 	p = (t_philo *)philo;
-	printf("num: %d\n", p->num_philo);
+	param.check = 0;
+	while (1)
+	{
+		take_forks(philo);
+	}
+		// printf("%lld    %d    has taken a fork\n", check_time() - param.time_start, p->num_philo);
 	return (NULL);
 }
 
@@ -76,5 +114,5 @@ int main(int argc, char **argv)
 	printf("must_eat: %d\n", param.must_eat);
 	printf("time_start: %lld\n", param.time_start);
 	for (int i = 1; i <= param.number_of_philo; i++)
-		printf("i: %d num_philo: %d\n", i, param.philo[i].num_philo);
+		printf("i: %d num_philo: %d left: %d right: %d\n", i, param.philo[i].num_philo, param.philo[i].left_fork, param.philo[i]. right_fork);
 }

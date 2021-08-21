@@ -15,7 +15,6 @@ typedef struct s_philo
 	int eating;
 }				t_philo;
 
-
 typedef struct s_param
 {
 	long long		time_start;
@@ -24,9 +23,11 @@ typedef struct s_param
     int 			time_to_eat;
     int 			time_to_sleep;
     int 			must_eat;
+	int check;
 	t_philo			*philo;
 	pthread_t		*tread;
 	pthread_mutex_t	*fork;
+	pthread_mutex_t	mutex;
 }				t_param;
 
 t_param param;
