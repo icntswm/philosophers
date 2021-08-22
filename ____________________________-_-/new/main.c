@@ -49,7 +49,6 @@ void	mutex_init(t_param *param)
 		pthread_mutex_init(&(param->fork[i]), NULL);
 		i++;
 	}
-	// pthread_mutex_init(&param->mutex, NULL);
 }
 
 void	*ft_eat(void *philo)
@@ -128,7 +127,7 @@ void	*life(void	*philo)
 				while (param.died == 0)
 					usleep (1);
 			}
-			break ;
+			return (NULL);
 		}
 	}
 	return (NULL);
@@ -151,6 +150,7 @@ void	*thread_death(void *param)
 			{
 				p->died = p->philo[i].num_philo;
 				printf("%lld    %d    died\n", check_time() - p->time_start, p->died);
+				exit(0);
 				return (NULL);
 			}
 			i++;
@@ -164,6 +164,7 @@ int main(int argc, char **argv)
 {
 	error(argc);
 	parser(&param, argv);
+	check_arguments(&param, argv);
 	philo_init(&param);
 	mutex_init(&param);
 	for (int i = 1; i <= param.number_of_philo; i++)
@@ -173,14 +174,13 @@ int main(int argc, char **argv)
 		pthread_create(&param.tread[i], NULL, life, &param.philo[i]);
 	}
 	pthread_create(&param.die, NULL, thread_death, &param);
+	pthread_join(param.die, NULL);
 
 
 	for (int i = 1; i <= param.number_of_philo; i++)
 	{
 		pthread_join(param.tread[i], NULL);
 	}
-
-	
 	
     // printf("number_of_philos: %d\n", param.number_of_philo);
     // printf("time_to_die: %d\n", param.time_to_die);

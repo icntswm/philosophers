@@ -37,6 +37,7 @@ t_param param;
 
 int main(int argc, char **argv);
 void	error(int argc);
+void	check_arguments(t_param *param, char **argv);
 int	ft_atoi(char *str);
 long long check_time();
 void	user_sleep(long long time);
