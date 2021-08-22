@@ -117,7 +117,7 @@ void	*life(void	*philo)
 	{
 		take_forks(philo);
 		ft_eat(philo);
-		if (p->col_eat == param.must_eat)
+		if (p->col_eat == param.must_eat && param.number_of_philo > 1)
 			break ;
 		ft_sleep(philo);
 		ft_thinking(philo);
@@ -166,18 +166,14 @@ int main(int argc, char **argv)
 	parser(&param, argv);
 	philo_init(&param);
 	mutex_init(&param);
-	pthread_create(&param.die, NULL, thread_death, &param);
-	// if (param.must_eat != 0)
-	// 	pthread_create(&param.check_must_eat, NULL, thread_must_eat, &param);
 	for (int i = 1; i <= param.number_of_philo; i++)
 	{
 		if (param.philo[i].num_philo % 2 == 0)
 			usleep(200);
 		pthread_create(&param.tread[i], NULL, life, &param.philo[i]);
 	}
-	// pthread_create(&param.die, NULL, thread_death, &param);
-	// if (param.must_eat != 0)
-	// 	pthread_create(&param.check_must_eat, NULL, thread_must_eat, &param);
+	pthread_create(&param.die, NULL, thread_death, &param);
+
 
 	for (int i = 1; i <= param.number_of_philo; i++)
 	{
