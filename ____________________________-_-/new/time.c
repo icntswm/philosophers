@@ -20,5 +20,6 @@ void	user_sleep(long long time)
 	{
 		if (check_time() == (save_time + time))
 			break;
+		usleep(10);
 	}
 }

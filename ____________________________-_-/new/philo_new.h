@@ -9,10 +9,11 @@
 
 typedef struct s_philo
 {
+	int	col_eat;
 	int num_philo;
 	int left_fork;
 	int right_fork;
-	int eating;
+	long long last_eat;
 }				t_philo;
 
 typedef struct s_param
@@ -23,11 +24,13 @@ typedef struct s_param
     int 			time_to_eat;
     int 			time_to_sleep;
     int 			must_eat;
-	int check;
+	int 			number_must_eat;
 	t_philo			*philo;
 	pthread_t		*tread;
+	pthread_t		die;
+	int died;
 	pthread_mutex_t	*fork;
-	pthread_mutex_t	mutex;
+	// pthread_mutex_t	mutex;
 }				t_param;
 
 t_param param;
