@@ -22,7 +22,8 @@ void	check_arguments(t_param *param, char **argv)
 		write(1, "Error: more than 200 philosophers\n", 35);
 		exit(0);
 	}
-	if (param->time_to_die < 60 || param->time_to_eat < 60 || param->time_to_sleep < 60)
+	if (param->time_to_die < 60 || param->time_to_eat < 60
+		|| param->time_to_sleep < 60)
 	{
 		write(1, "Error: less than 60 milliseconds\n", 34);
 		exit(0);

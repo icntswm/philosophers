@@ -1,9 +1,9 @@
 #include "philo_new.h"
 
-long long check_time()
+long long	check_time(void)
 {
-	struct timeval tv;
-	long long milisec;
+	struct timeval	tv;
+	long long		milisec;
 
 	milisec = 0;
 	gettimeofday(&tv, NULL);
@@ -14,12 +14,14 @@ long long check_time()
 void	user_sleep(long long time)
 {
 	long long	save_time;
-	
+
 	save_time = check_time();
 	while (1)
 	{
+		if (param.died != 0)
+			break ;
 		if (check_time() == (save_time + time))
-			break;
-		usleep(10);
+			break ;
+		usleep(5);
 	}
 }
