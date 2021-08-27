@@ -22,7 +22,7 @@ CFLAGS	=	-Wall -Wextra -Werror -g
 			${CC} ${CFLAGS} -c $< -I ${P_HEAD} -o $@
 
 ${NAME}:	${OBJS}
-			${CC} ${OBJS} -o ${NAME}
+			${CC} ${OBJS} -o ${NAME} -lpthread
 
 all:		${NAME}
 
