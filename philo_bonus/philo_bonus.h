@@ -7,6 +7,8 @@
 #include <sys/time.h>
 #include <pthread.h>
 #include <semaphore.h>
+#include <sys/wait.h>
+#include <fcntl.h>
 
 typedef struct s_param
 {
