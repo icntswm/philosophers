@@ -1,31 +1,30 @@
-#ifndef PHILO_BONUS
-# define PHILO_BONUS
+#ifndef PHILO_BONUS_H
+# define PHILO_BONUS_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/time.h>
-#include <pthread.h>
-#include <semaphore.h>
-#include <sys/wait.h>
-#include <fcntl.h>
-#include <signal.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <sys/time.h>
+# include <pthread.h>
+# include <semaphore.h>
+# include <sys/wait.h>
+# include <fcntl.h>
+# include <signal.h>
 
 typedef struct s_philo
 {
-	int num_philo;
-	int col_eat;
-	long long last_eat;
-	pid_t	die;
+	int			num_philo;
+	int			col_eat;
+	long long	last_eat;
+	pid_t		die;
 	pthread_t	thread;
-	sem_t	*mutex;
-	char *name_sem;
+	sem_t		*mutex;
+	char		*name_s;
 }				t_philo;
-
 
 typedef struct s_param
 {
-	int				number_of_philo;
+	int				num_of_philo;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
@@ -35,21 +34,21 @@ typedef struct s_param
 	sem_t			*kill;
 	sem_t			*forks;
 	sem_t			*mut;
-	t_philo			*philo;
+	t_philo			*ph;
 }				t_param;
 
 t_param	g_param;
 
-int main(int argc, char **argv);
-int	ft_atoi(char *str);
+int			main(int argc, char **argv);
+int			ft_atoi(char *str);
 //error
-void	error(int argc);
-void	check_arguments(t_param *g_param, char **argv);
-void	ft_free(void);
+void		error(int argc);
+void		check_arguments(t_param *g_param, char **argv);
+void		ft_free(void);
 //time
 //void	user_sleep(long long time);
 long long	check_time(void);
-char	*ft_itoa(int n);
-int ft_strlen(char *str);
+char		*ft_itoa(int n);
+int			ft_strlen(char *str);
 
 #endif
