@@ -32,7 +32,7 @@ void	*ft_eat(void *philo)
 		}
 		pthread_mutex_unlock(&g_param.mutex);
 		p->last_eat = check_time();
-		user_sleep(g_param.time_to_eat);
+		usleep(g_param.time_to_eat);
 	}
 	if (p->left_fork >= 0)
 		pthread_mutex_unlock(&g_param.fork[p->left_fork]);
@@ -97,7 +97,7 @@ void	*ft_sleep(void *philo)
 			printf("%d    is sleeping\n", p->num_philo);
 		}
 		pthread_mutex_unlock(&g_param.mutex);
-		user_sleep(g_param.time_to_sleep);
+		usleep(g_param.time_to_sleep);
 	}
 	return (NULL);
 }

@@ -16,8 +16,8 @@ void	parser(t_param *g_param, char **argv)
 {
 	g_param->number_of_philo = ft_atoi(argv[1]);
 	g_param->time_to_die = ft_atoi(argv[2]);
-	g_param->time_to_eat = ft_atoi(argv[3]);
-	g_param->time_to_sleep = ft_atoi(argv[4]);
+	g_param->time_to_eat = ft_atoi(argv[3]) * 1000;
+	g_param->time_to_sleep = ft_atoi(argv[4]) * 1000;
 	if (argv[5])
 		g_param->must_eat = ft_atoi(argv[5]);
 	else
