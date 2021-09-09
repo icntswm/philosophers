@@ -22,7 +22,7 @@ long long	check_time(void)
 	milisec = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
 	return (milisec);
 }
-/*
+
 void	user_sleep(long long time)
 {
 	long long	save_time;
@@ -34,7 +34,6 @@ void	user_sleep(long long time)
 			break ;
 		if (check_time() == (save_time + time))
 			break ;
-		usleep(50);
+		usleep(300);
 	}
 }
-*/

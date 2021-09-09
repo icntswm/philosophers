@@ -57,7 +57,7 @@ void		check_arguments(t_param *param, char **argv);
 int			ft_atoi(char *str);
 //time
 long long	check_time(void);
-// void		user_sleep(long long time);
+void		user_sleep(long long time);
 //life process
 void		*take_forks(void *philo);
 void		*ft_eat(void *philo);
