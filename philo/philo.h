@@ -50,23 +50,24 @@ typedef struct s_param
 t_param	g_param;
 
 int			main(int argc, char **argv);
-
+//error
 void		error(int argc);
 void		check_arguments(t_param *param, char **argv);
-
+//other
 int			ft_atoi(char *str);
+//time
 long long	check_time(void);
-void		user_sleep(long long time);
-
+// void		user_sleep(long long time);
+//life process
 void		*take_forks(void *philo);
 void		*ft_eat(void *philo);
 void		*ft_sleep(void *philo);
 void		*ft_thinking(void *philo);
-
+//pars/init
 void		parser(t_param *param, char **argv);
 void		philo_init(t_param *param);
 void		mutex_init(t_param *param);
-
+//thread death
 void		*thread_death(void *par);
 
 #endif

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fkenned <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/09 15:12:58 by fkenned           #+#    #+#             */
+/*   Updated: 2021/09/09 15:13:07 by fkenned          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo_bonus.h"
 
 void	error(int argc)
@@ -11,19 +23,19 @@ void	error(int argc)
 
 void	check_arguments(t_param *g_param, char **argv)
 {
-	if (g_param->number_of_philo <= 0 || g_param->time_to_die <= 0
+	if (g_param->num_of_philo <= 0 || g_param->time_to_die <= 0
 		|| g_param->time_to_eat <= 0 || g_param->time_to_sleep <= 0)
 	{
 		write(1, "Error: negative or zero arguments\n", 34);
 		exit(0);
 	}
-	if (g_param->number_of_philo > 200)
+	if (g_param->num_of_philo > 200)
 	{
 		write(1, "Error: more than 200 philosophers\n", 35);
 		exit(0);
 	}
-	if (g_param->time_to_die < 60 || g_param->time_to_eat < 60
-		|| g_param->time_to_sleep < 60)
+	if (g_param->time_to_die < 60 || g_param->time_to_eat < 60000
+		|| g_param->time_to_sleep < 60000)
 	{
 		write(1, "Error: less than 60 milliseconds\n", 34);
 		exit(0);

@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkenned <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/25 18:52:42 by fkenned           #+#    #+#             */
-/*   Updated: 2021/08/25 18:53:02 by fkenned          ###   ########.fr       */
+/*   Created: 2021/09/09 15:14:34 by fkenned           #+#    #+#             */
+/*   Updated: 2021/09/09 15:14:36 by fkenned          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
 long long	check_time(void)
 {
@@ -22,6 +22,7 @@ long long	check_time(void)
 	milisec = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
 	return (milisec);
 }
+
 /*
 void	user_sleep(long long time)
 {
@@ -30,11 +31,9 @@ void	user_sleep(long long time)
 	save_time = check_time();
 	while (1)
 	{
-		if (g_param.died != 0)
-			break ;
 		if (check_time() == (save_time + time))
 			break ;
-		usleep(50);
+		usleep(100);
 	}
 }
 */
