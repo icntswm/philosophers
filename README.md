@@ -2,7 +2,7 @@
 
 ***Project completed on***: `125/125`
 ***
-The main goal of this project:
+> The main goal of this project:
 acquaintance with multithreading, in the main part,
 and with multiprocessing, in the bonus part, as well as with mutexes and semaphores.
 
