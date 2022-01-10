@@ -5,7 +5,7 @@
 The main goal of this project:
 > acquaintance with multithreading, in the main part,
 > and with multiprocessing, in the bonus part, as well as with mutexes and semaphores.
-***
+
 The main idea:
 > there are n-th number of philosophers who must eat, sleep, think.
 > For eating, everyone needs to have 2 forks, one in the right hand, the other in the left.
