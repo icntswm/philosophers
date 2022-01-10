@@ -1,6 +1,6 @@
 # philosophers
 
-***Project completed on***: 125/125
+***Project completed on***: `125/125`
 ***
 The main goal of this project:
 acquaintance with multithreading, in the main part,
