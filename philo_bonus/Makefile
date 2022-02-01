@@ -19,8 +19,8 @@ RM		=	rm -f
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror -g
 
-.c.o:
-			${CC} ${CFLAGS} -c $< -I ${P_HEAD} -o $@
+.c.o:		${P_HEAD}
+			${CC} ${CFLAGS} -c $< -o $@
 
 ${NAME}:	${OBJS}
 			${CC} ${OBJS} -o ${NAME} -lpthread
